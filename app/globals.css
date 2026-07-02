@@ -81,7 +81,7 @@ select {
 
 .brand-mark {
   display: grid;
-  width: 42px;
+  width: 62px;
   height: 42px;
   flex: 0 0 auto;
   place-items: center;
@@ -91,6 +91,12 @@ select {
   font-family: "PT Serif", serif;
   font-size: 20px;
   font-weight: 700;
+}
+
+.brand-mark img {
+  width: 54px;
+  height: 34px;
+  object-fit: contain;
 }
 
 .brand-lockup strong,

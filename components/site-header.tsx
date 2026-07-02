@@ -13,7 +13,9 @@ export function SiteHeader() {
   return (
     <header className="site-header">
       <Link className="brand-lockup" href="/" aria-label="Harman Homes blog">
-        <span className="brand-mark">HS</span>
+        <span className="brand-mark">
+          <img src={BRAND.images.logo} alt="" />
+        </span>
         <span>
           <strong>{BRAND.agent}</strong>
           <small>{BRAND.legalName}</small>

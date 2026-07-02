@@ -8,7 +8,9 @@ export function SiteFooter() {
       <div className="footer-grid">
         <div>
           <Link className="brand-lockup footer-brand" href="/">
-            <span className="brand-mark">HS</span>
+            <span className="brand-mark">
+              <img src={BRAND.images.logo} alt="" />
+            </span>
             <span>
               <strong>{BRAND.agent}</strong>
               <small>{BRAND.legalName}</small>
