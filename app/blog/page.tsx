@@ -1,0 +1,37 @@
+import type { Metadata } from "next";
+import { BlogIndex } from "@/components/blog-index";
+import { getBlogs } from "@/lib/uplift";
+
+export const metadata: Metadata = {
+  title: "Real Estate Blog",
+  description:
+    "Brampton and GTA real estate blog posts from Harman Sangha, RE/MAX Gold Realty."
+};
+
+type PageProps = {
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
+};
+
+function parsePage(value?: string | string[]) {
+  const raw = Array.isArray(value) ? value[0] : value;
+  const page = Number(raw || "1");
+  return Number.isFinite(page) && page > 0 ? page : 1;
+}
+
+export default async function BlogPage({ searchParams }: PageProps) {
+  const params = await searchParams;
+  const currentPage = parsePage(params?.page);
+  const { blogs, pagination, isPreview } = await getBlogs({
+    page: currentPage,
+    limit: 9
+  });
+
+  return (
+    <BlogIndex
+      blogs={blogs}
+      pagination={pagination}
+      currentPage={currentPage}
+      isPreview={isPreview}
+    />
+  );
+}
