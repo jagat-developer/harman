@@ -6,6 +6,7 @@ import {
   Home,
   LineChart,
   MapPinned,
+  Search,
   Star
 } from "lucide-react";
 import Link from "next/link";
@@ -22,6 +23,39 @@ type BlogIndexProps = {
   isPreview?: boolean;
 };
 
+const actionTiles = [
+  {
+    label: "Home Value",
+    href: `${BRAND.website}/home-evaluation`,
+    icon: Home
+  },
+  {
+    label: "Property Search",
+    href: `${BRAND.website}/buy-homes-for-sale`,
+    icon: Search
+  },
+  {
+    label: "Dream Home",
+    href: `${BRAND.website}/buy-homes-for-sale`,
+    icon: Star
+  },
+  {
+    label: "Pre-Construction",
+    href: `${BRAND.website}/pre-construction`,
+    icon: Building2
+  },
+  {
+    label: "Map Search",
+    href: `${BRAND.website}/map-search`,
+    icon: MapPinned
+  },
+  {
+    label: "Market Updates",
+    href: "#latest",
+    icon: LineChart
+  }
+];
+
 export function BlogIndex({
   blogs,
   pagination,
@@ -35,78 +69,53 @@ export function BlogIndex({
 
   return (
     <div className="site-shell">
-      <SiteHeader />
-
       <main>
         <section className="blog-hero">
-          <div className="hero-copy">
-            <span className="eyebrow">Harman Homes Market Notes</span>
-            <h1>Brampton & GTA real estate insight with local proof.</h1>
-            <p>
-              Practical buyer guides, seller strategy, market updates, and
-              neighbourhood context from Harman Sangha and RE/MAX Gold Realty.
-            </p>
+          <img className="hero-background" src={BRAND.images.heroKitchen} alt="" />
+          <div className="hero-overlay" />
+          <SiteHeader variant="hero" />
 
-            <div className="hero-actions">
-              <a className="solid-button" href="#latest">
-                Latest articles
-                <ArrowRight size={18} aria-hidden="true" />
-              </a>
-              <a
-                className="ghost-button"
-                href={`${BRAND.website}/home-evaluation`}
-                target="_blank"
-              >
-                Home value
-                <Home size={18} aria-hidden="true" />
-              </a>
+          <div className="hero-lower">
+            <div className="hero-search-panel" aria-label="Real estate search">
+              <span className="eyebrow">Brampton & surrounding areas</span>
+              <h1>Real estate insight, listings, and market updates.</h1>
+              <form action={`${BRAND.website}/search`} className="hero-search">
+                <label htmlFor="hero-search" className="sr-only">
+                  Search by city, neighbourhood, or MLS number
+                </label>
+                <input
+                  id="hero-search"
+                  name="query"
+                  placeholder="City, neighbourhood, MLS number"
+                />
+                <button type="submit">
+                  <Search size={18} aria-hidden="true" />
+                  Search
+                </button>
+              </form>
+              <div className="hero-mini-links">
+                <a href="#latest">Latest Blog Posts</a>
+                <a href={`${BRAND.website}/home-evaluation`}>Free Home Evaluation</a>
+                <a href={`${BRAND.website}/contact_me`}>Contact Harman</a>
+              </div>
             </div>
 
-            <div className="hero-stats" aria-label="Service highlights">
-              <span>
-                <strong>13+</strong>
-                years experience
-              </span>
-              <span>
-                <strong>GTA</strong>
-                neighbourhood coverage
-              </span>
-              <span>
-                <strong>RE/MAX</strong>
-                Gold Realty
-              </span>
-            </div>
-          </div>
-
-          <div className="hero-visual" aria-label="Harman Sangha">
-            <img src={BRAND.images.agentHero} alt="Harman Sangha" />
-            <div className="hero-credential">
-              <span className="status-dot" />
-              <span>
-                <strong>{BRAND.agent}</strong>
-                <small>{BRAND.role}</small>
-              </span>
+            <div className="hero-slide-dots" aria-hidden="true">
+              <span className="active" />
+              <span />
+              <span />
+              <span />
             </div>
           </div>
         </section>
 
-        <section className="feature-band" aria-label="Blog themes">
-          <div>
-            <LineChart size={21} aria-hidden="true" />
-            Market data made useful
-          </div>
-          <div>
-            <Building2 size={21} aria-hidden="true" />
-            Residential, commercial & land
-          </div>
-          <div>
-            <MapPinned size={21} aria-hidden="true" />
-            Brampton, Caledon & nearby GTA
-          </div>
-          <div>
-            <Star size={21} aria-hidden="true" />
-            Buyer and seller strategy
-          </div>
+        <section className="quick-actions" aria-label="Real estate shortcuts">
+          {actionTiles.map(({ label, href, icon: Icon }) => (
+            <a key={label} href={href}>
+              <Icon size={20} aria-hidden="true" />
+              <span>{label}</span>
+            </a>
+          ))}
         </section>
 
         <section className="content-section" id="latest">

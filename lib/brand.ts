@@ -15,6 +15,12 @@ export const BRAND = {
     og: "https://www.harman.homes/files/og_images/16257/og_image.jpg",
     logo:
       "https://www.harman.homes/files/themeManager/16257/theme28/oj37tbzjtbxdwow18itr.png",
+    heroKitchen:
+      "https://www.harman.homes/files/flashbanner/387253/slide02.jpg",
+    heroLiving:
+      "https://www.harman.homes/files/flashbanner/387253/slide01.jpg",
+    heroExterior:
+      "https://www.harman.homes/files/flashbanner/387253/slide03.jpg",
     blogFallbacks: {
       market:
         "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1400&q=82",
