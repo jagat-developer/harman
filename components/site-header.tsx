@@ -1,5 +1,6 @@
 import {
   ArrowUpRight,
+  ChevronDown,
   Mail,
   MapPin,
   Menu,
@@ -16,11 +17,13 @@ type SiteHeaderProps = {
 const navItems = [
   { label: "Home", href: BRAND.website },
   { label: "Pre-Construction", href: `${BRAND.website}/pre-construction` },
-  { label: "Sold", href: `${BRAND.website}/sold-listings` },
-  { label: "Buy", href: `${BRAND.website}/buy-homes-for-sale` },
-  { label: "Sell", href: `${BRAND.website}/home-evaluation` },
+  { label: "Solds", href: `${BRAND.website}/sold-listings`, hasMenu: true },
+  { label: "Buy", href: `${BRAND.website}/buy-homes-for-sale`, hasMenu: true },
+  { label: "Sell", href: `${BRAND.website}/home-evaluation`, hasMenu: true },
   { label: "Map Search", href: `${BRAND.website}/map-search` },
-  { label: "Contact Me", href: `${BRAND.website}/contact_me` }
+  { label: "Contact Me", href: `${BRAND.website}/contact_me` },
+  { label: "Useful Tools", href: `${BRAND.website}/calculators`, hasMenu: true },
+  { label: "More Info", href: `${BRAND.website}/about_me/28474`, hasMenu: true }
 ];
 
 export function SiteHeader({ variant = "default" }: SiteHeaderProps) {
@@ -48,15 +51,18 @@ export function SiteHeader({ variant = "default" }: SiteHeaderProps) {
         {navItems.map((item) => (
           <a key={item.label} href={item.href}>
             {item.label === "Map Search" ? (
-              <MapPin size={15} aria-hidden="true" />
+              <MapPin size={13} aria-hidden="true" />
             ) : null}
             {item.label}
+            {item.hasMenu ? <ChevronDown size={12} aria-hidden="true" /> : null}
           </a>
         ))}
-        <Link href="/blog">
-          <Search size={15} aria-hidden="true" />
-          Blog
-        </Link>
+        {!isHero ? (
+          <Link href="/blog">
+            <Search size={13} aria-hidden="true" />
+            Blog
+          </Link>
+        ) : null}
       </nav>
 
       {isHero ? (
@@ -66,7 +72,7 @@ export function SiteHeader({ variant = "default" }: SiteHeaderProps) {
         </span>
       ) : null}
 
-      <div className="header-actions">
+      <div className={isHero ? "header-actions hero-header-actions" : "header-actions"}>
         <a className="ghost-button compact" href={`tel:${BRAND.phone}`}>
           <Phone size={16} aria-hidden="true" />
           {BRAND.phone}
