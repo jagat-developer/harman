@@ -116,8 +116,8 @@ select {
 }
 
 .brand-agent-photo {
-  width: 68px;
-  height: 68px;
+  width: clamp(72px, 5vw, 92px);
+  height: clamp(72px, 5vw, 92px);
   overflow: hidden;
   flex: 0 0 auto;
   border: 2px solid rgba(255, 255, 255, 0.74);
@@ -154,30 +154,30 @@ select {
 }
 
 .site-header-hero .brand-lockup {
-  flex: 0 0 470px;
-  gap: 9px;
+  flex: 0 0 clamp(455px, 34vw, 560px);
+  gap: 10px;
 }
 
 .site-header-hero .brand-mark {
-  width: 78px;
-  height: 46px;
+  width: clamp(96px, 7.5vw, 124px);
+  height: clamp(62px, 5vw, 86px);
   border-radius: 0;
   background: transparent;
 }
 
 .site-header-hero .brand-mark img {
-  width: 72px;
-  height: 42px;
+  width: 100%;
+  height: 100%;
 }
 
 .site-header-hero .brand-lockup strong {
-  font-size: 0.95rem;
+  font-size: clamp(0.9rem, 0.9vw, 1.1rem);
   font-weight: 700;
 }
 
 .site-header-hero .brand-lockup small {
   color: rgba(255, 255, 255, 0.92);
-  font-size: 0.82rem;
+  font-size: clamp(0.8rem, 0.8vw, 1rem);
   font-weight: 400;
 }
 
@@ -322,7 +322,7 @@ select {
 .blog-hero {
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  min-height: max(760px, 100vh);
   overflow: hidden;
   background: var(--charcoal);
 }
