@@ -16,14 +16,33 @@ type SiteHeaderProps = {
 
 const navItems = [
   { label: "Home", href: BRAND.website },
-  { label: "Pre-Construction", href: `${BRAND.website}/pre-construction` },
-  { label: "Solds", href: `${BRAND.website}/sold-listings`, hasMenu: true },
-  { label: "Buy", href: `${BRAND.website}/buy-homes-for-sale`, hasMenu: true },
-  { label: "Sell", href: `${BRAND.website}/home-evaluation`, hasMenu: true },
-  { label: "Map Search", href: `${BRAND.website}/map-search` },
-  { label: "Contact Me", href: `${BRAND.website}/contact_me` },
-  { label: "Useful Tools", href: `${BRAND.website}/calculators`, hasMenu: true },
-  { label: "More Info", href: `${BRAND.website}/about_me/28474`, hasMenu: true }
+  {
+    label: "Pre-Construction",
+    href: `${BRAND.website}/list/pre-construction-condos`
+  },
+  {
+    label: "Solds",
+    href: `${BRAND.website}/property_find_results&propertyClass=Any&sold=on`,
+    hasMenu: true
+  },
+  {
+    label: "Buy",
+    href: `${BRAND.website}/node/add/dream_home/lead_form_view?step=1`,
+    hasMenu: true
+  },
+  {
+    label: "Sell",
+    href: `${BRAND.website}/node/add/free_home_valuation/lead_form_view?step=1`,
+    hasMenu: true
+  },
+  { label: "Map Search", href: `${BRAND.website}/propertySearch` },
+  { label: "Contact Me", href: `${BRAND.website}/node/add/contactSite` },
+  { label: "Useful Tools", href: `${BRAND.website}/freeReport`, hasMenu: true },
+  {
+    label: "More Info",
+    href: `${BRAND.website}/selling_tips.links.HarmanSangha`,
+    hasMenu: true
+  }
 ];
 
 export function SiteHeader({ variant = "default" }: SiteHeaderProps) {
